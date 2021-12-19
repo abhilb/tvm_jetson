@@ -22,7 +22,8 @@ RUN apt-get update && apt-get install -y git \
     libz-dev \
     libcurl4-openssl-dev \
     libssl-dev \
-    libopenblas-dev
+    libopenblas-dev \
+    software-properties-common
 
 RUN wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-ubuntu2004.pin    
 RUN mv cuda-ubuntu2004.pin /etc/apt/preferences.d/cuda-repository-pin-600
