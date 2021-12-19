@@ -2,7 +2,9 @@ FROM ubuntu:20.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update && apt-get install -y git cmake g++ wget vim bash \
+RUN apt-get update && apt-get install -y git \
+    wget \
+    bash \
     cuda-toolkit-10-2 \
     cuda-compiler-10-2 python3 \
     python3-dev \
@@ -15,7 +17,6 @@ RUN apt-get update && apt-get install -y git cmake g++ wget vim bash \
     cmake \
     libedit-dev \
     libxml2-dev \
-    git \
     llvm-12 \
     llvm-12-dev \
     llvm-12-runtime \
@@ -38,7 +39,7 @@ RUN mkdir cross_compiler && tar xvf gcc-4.8.5-aarch64.tgz -C cross_compiler
 
 RUN mkdir -p work && cd /work
 
-RUN git clone https://github.com/apache/tvm.git
+RUN git clone --recursive https://github.com/apache/tvm tvm
 
 RUN mkdir -p /work/tvm/build 
 
