@@ -5,8 +5,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y git \
     wget \
     bash \
-    cuda-toolkit-10-2 \
-    cuda-compiler-10-2 python3 \
+    python3 \
     python3-dev \
     python3-setuptools \
     python3-pip \
@@ -24,6 +23,13 @@ RUN apt-get update && apt-get install -y git \
     libcurl4-openssl-dev \
     libssl-dev \
     libopenblas-dev
+
+RUN wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-ubuntu2004.pin    
+RUN mv cuda-ubuntu2004.pin /etc/apt/preferences.d/cuda-repository-pin-600
+RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/7fa2af80.pub
+RUN add-apt-repository "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/ /"
+RUN apt-get update
+RUN apt-get -y install cuda
 
 RUN python3 -m pip install numpy \
     decorator \
