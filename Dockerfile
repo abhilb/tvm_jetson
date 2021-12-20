@@ -54,7 +54,7 @@ RUN mkdir -p /work/tvm/build
 
 WORKDIR /work/tvm/build
 
-RUN echo "set (USE_LLVM llvm-config-12)\nset (USE_CUDA ON)\nset (USE_CUDNN OFF)\nset (USE_BLAS openblas)" >> config.cmake
+RUN echo "set (USE_LLVM llvm-config-12)\nset (USE_CUDA ON)\nset (USE_CUDNN OFF)" >> config.cmake
 RUN cmake -DCMAKE_C_COMPILER="/cross_compiler/install/bin/aarch64-unknown-linux-gnu-gcc" -DCMAKE_CXX_COMPILER="/cross_compiler/install/bin/aarch64-unknown-linux-gnu-g++" ..
 RUN cmake --build . -j 4
 
