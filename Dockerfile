@@ -46,21 +46,30 @@ RUN mkdir cross_compiler && tar xvf gcc-linaro-7.3.1-2018.05-x86_64_aarch64-linu
 
 RUN ls /cross_compiler
 
-# RUN mkdir -p work 
+RUN mkdir -p work 
 
-# WORKDIR /work
+COPY ./config.cmake /
 
-# RUN git clone --recursive https://github.com/apache/tvm tvm
+WORKDIR /work
 
-# RUN mkdir -p /work/tvm/build 
+RUN git clone --recursive https://github.com/apache/tvm /work/tvm
 
-# WORKDIR /work/tvm/build
+RUN mkdir -p /work/tvm/build 
 
-# RUN echo "set (USE_LLVM llvm-config-12)\nset (USE_CUDA ON)\nset (USE_CUDNN OFF)" >> config.cmake
-# RUN cmake -DCMAKE_C_COMPILER="/cross_compiler/install/bin/aarch64-unknown-linux-gnu-gcc" -DCMAKE_CXX_COMPILER="/cross_compiler/install/bin/aarch64-unknown-linux-gnu-g++" ..
-# RUN cmake --build . -j 4
+RUN ls /work
 
-# WORKDIR /work/tvm/python
-# RUN python3 setup.py install
+RUN ls /work/tvm
+
+WORKDIR /work/tvm/build
+
+RUN cp /config.cmake .
+
+RUN cmake -DCMAKE_C_COMPILER="/cross_compiler/gcc-linaro-7.3.1-2018.05-x86_64_aarch64-linux-gnu/bin/aarch64-unknown-linux-gnu-gcc" -DCMAKE_CXX_COMPILER="/cross_compiler/gcc-linaro-7.3.1-2018.05-x86_64_aarch64-linux-gnu/bin/aarch64-unknown-linux-gnu-g++" ..
+
+RUN cmake --build . -j 4
+
+WORKDIR /work/tvm/python
+
+RUN python3 setup.py install
 
 ENTRYPOINT [ "/bin/bash" ]
