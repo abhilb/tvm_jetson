@@ -66,7 +66,7 @@ RUN cp /config.cmake .
 
 RUN cmake -DCMAKE_C_COMPILER="/cross_compiler/gcc-linaro-7.3.1-2018.05-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-gcc" -DCMAKE_CXX_COMPILER="/cross_compiler/gcc-linaro-7.3.1-2018.05-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-g++" ..
 
-RUN cmake --build . --paralel 300
+RUN cmake --build . --parallel 300
 
 WORKDIR /work/tvm/python
 
