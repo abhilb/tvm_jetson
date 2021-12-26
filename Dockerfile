@@ -1,15 +1,29 @@
-FROM alpine:3.15
-RUN apk add --no-cache git \
+FROM ubuntu:20.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y git \
     wget \
     bash \
     python3 \
     python3-dev \
+    python3-setuptools \
+    python3-pip \
+    libtinfo-dev \
+    zlib1g-dev \
     bash \
+    build-essential \
     cmake \
     libedit-dev \
     libxml2-dev \
-    llvm12-dev \
-    py3-pip
+    llvm-12 \
+    llvm-12-dev \
+    llvm-12-runtime \
+    libz-dev \
+    libcurl4-openssl-dev \
+    libssl-dev \
+    libopenblas-dev \
+    software-properties-common
 
 RUN python3 -m pip install numpy \
     decorator \
