@@ -23,7 +23,8 @@ RUN apt-get update && apt-get install -y git \
     libcurl4-openssl-dev \
     libssl-dev \
     libopenblas-dev \
-    software-properties-common
+    software-properties-common \
+    unzip
 
 RUN python3 -m pip install numpy \
     decorator \
