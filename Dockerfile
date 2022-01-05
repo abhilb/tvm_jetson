@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM nvcr.io/nvidia/l4t-cuda:10.2.460-runtime
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -34,19 +34,12 @@ RUN python3 -m pip install numpy \
     wheel \
     cython
 
-RUN wget https://developer.nvidia.com/embedded/dlc/l4t-gcc-7-3-1-toolchain-64-bit -O gcc-linaro-7.3.1-2018.05-x86_64_aarch64-linux-gnu.tar.xz
-RUN wget https://developer.nvidia.com/embedded/l4t/r32_release_v6.1/jeston_nano/jetson-nano-jp46-sd-card-image.zip
-RUN mkdir cross_compiler && tar xvf gcc-linaro-7.3.1-2018.05-x86_64_aarch64-linux-gnu.tar.xz -C cross_compiler
-RUN unzip jetson-nano-jp46-sd-card-image.zip
-RUN mkdir -p /mnt/jetson
-RUN mount -v -o offset=$((512 * 28672)) -t ext4 sd-blob-b01.img /mnt/jetpack 
+RUN mkdir -p work 
 
-# RUN mkdir -p work 
+COPY ./config.cmake /
+WORKDIR /work
 
-# COPY ./config.cmake /
-# WORKDIR /work
-
-# RUN git clone --recursive https://github.com/apache/tvm /work/tvm
+RUN git clone --recursive https://github.com/apache/tvm /work/tvm
 # RUN mkdir -p /work/tvm/build 
 # WORKDIR /work/tvm/build
 # RUN cp /config.cmake .
