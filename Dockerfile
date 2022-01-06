@@ -26,13 +26,13 @@ RUN apt-get update && apt-get install -y git \
     software-properties-common \
     unzip
 
-RUN python3 -m pip install numpy \
-    decorator \
-    attrs \
-    future \
-    xgboost \
-    wheel \
-    cython
+# RUN python3 -m pip install numpy \
+#     decorator \
+#     attrs \
+#     future \
+#     xgboost \
+#     wheel \
+#     cython
 
 RUN mkdir -p work 
 
