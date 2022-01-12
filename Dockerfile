@@ -17,11 +17,11 @@ RUN apt-get update && apt-get install -y git \
     python3.8 \
     unzip
 
-RUN rm /usr/bin/python3
-RUN ln -s /usr/bin/python3.8 /usr/bin/python3
-RUN python3 -m pip install pip
-RUN python3 -m pip install cython wheel
-RUN python3 -m pip install numpy decorator attrs future xgboost 
+# RUN rm /usr/bin/python3
+# RUN ln -s /usr/bin/python3.8 /usr/bin/pyth# on3
+# RUN python3 -m pip install pip
+# # RUN python3 -m pip install cython wheel
+# RUN python3 -m pip install numpy decorator attrs future xgboost 
 # wget \
 # bash \
 # libtinfo-dev \
