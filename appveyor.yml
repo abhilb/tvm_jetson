@@ -2,10 +2,10 @@ version: 1.0.{build}
 image: Ubuntu
 
 services:
-  - docker
+- docker
 
-init_script:
-  -sh: ./init.sh
+install:
+- sh: ./init.sh
 
 build_script:
-  -sh: ./build.sh
+- sh: ./build.sh
