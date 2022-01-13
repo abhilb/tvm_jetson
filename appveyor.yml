@@ -1,13 +1,17 @@
 version: 1.0.{build}
 image: Ubuntu
 
-services:
-- docker
+environment:
+  matrix:
+    - ARCH: arm64
 
 install:
 - sh: sudo apt-get update -y -qq
 - sh: sudo apt-get install -y qemu-user-static
 - sh: sudo apt-get install -y binfmt-support
+
+services:
+- docker
 
 build_script:
 - sh: docker build -t tvm_jetson .
