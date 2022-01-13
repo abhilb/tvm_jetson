@@ -1,4 +1,4 @@
-FROM nvcr.io/nvidia/l4t-cuda:10.2.460-runtime
+FROM --platform=linux/arm64 nvcr.io/nvidia/l4t-cuda:10.2.460-runtime
 
 RUN apt-get update
 RUN apt-get install -y python3 python3-dev python3-setuptools gcc libtinfo-dev zlib1g-dev build-essential cmake libedit-dev libxml2-dev git cmake
