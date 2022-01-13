@@ -14,4 +14,4 @@ services:
 - docker
 
 build_script:
-- sh: docker build -t tvm_jetson --build-arg "arch=arm64" .
+  - sh: docker build --platform "linux/arm64" -t tvm_jetson --build-arg "arch=arm64" .
