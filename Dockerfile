@@ -19,6 +19,6 @@ WORKDIR /tvm/build
 
 COPY ./config.cmake /tvm/build/
 
-RUN cmake .. && make -j 2
+RUN cmake .. && make -j 4
 
 ENTRYPOINT [ "/bin/bash" ]
