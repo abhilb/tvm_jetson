@@ -19,7 +19,7 @@ WORKDIR /tvm/build
 
 COPY ./config.cmake /tvm/build/
 
-RUN cmake .. && make -j
+RUN cmake .. && make -j 8
 
 RUN apt-get install python3.8 python3.8-dev
 
