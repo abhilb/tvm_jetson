@@ -29,31 +29,16 @@ RUN ln -s /usr/bin/python3.8 /usr/bin/python3
 
 RUN python3.8 -m pip install pip
 
-RUN python3.8 -m pip install asn1crypto == 0.24.0 \
-    attrs == 21.4.0 \
-    cloudpickle == 2.0.0 \
-    cryptography == 2.1.4 \
-    Cython == 0.29.26 \
-    decorator == 5.1.1 \
-    idna == 2.6 \
-    keyring == 10.6.0 \
-    keyrings.alt == 3.0 \
-    import numpy as np == 1.22.1 \
-    pip == 9.0.1 \
-    psutil == 5.9.0 \
-    pycrypto == 2.6.1 \
-    Pygments == 2.2.0 \
-    pygobject == 3.26.1 \
-    pyxdg == 0.25 \
-    PyYAML == 3.12 \
-    SecretStorage == 2.3.1 \
-    setuptools == 39.0.1 \
-    six == 1.11.0 \
-    wheel == 0.30.0 \
-    cython
+RUN python3.8 -m pip install numpy
 
 WORKDIR /tvm/python
 
+RUN python3.8 gen_requirements.py
+
+RUN python3.8 -m pip install -r requirements/core.txt
+
 RUN python3.8 setup.py bdist_wheel
+
+RUN mkdir -p /wheels
 
 ENTRYPOINT [ "/bin/bash" ]

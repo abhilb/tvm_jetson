@@ -2,8 +2,8 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
+    tags:
+      - 'v*'
     branches: [ main ]
 
 jobs:
@@ -11,17 +11,17 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    timeout-minutes: 400 
+    timeout-minutes: 420
 
     steps:
       -
-        name: Checkout 
+        name: Checkout
         uses: actions/checkout@v2
 
       - name: Install Deps
-        run: | 
+        run: |
           sudo apt-get update -y -qq
-          sudo apt-get install -y qemu-user-static 
+          sudo apt-get install -y qemu-user-static
           sudo apt-get install -y binfmt-support
 
       -
