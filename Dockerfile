@@ -36,9 +36,7 @@ RUN python3 -m pip install cython pybind11
 RUN python3 -m pip install attrs \
                            cloudpickle \
                            decorator \
-                           numpy \
                            psutil \
-                           scipy \
                            synr \
                            tornado
 
