@@ -29,9 +29,9 @@ RUN rm /usr/bin/python3
 
 RUN ln -s /usr/bin/python3.8 /usr/bin/python3
 
-RUN apt-get install -y python3-pip
+RUN apt-get install -y python3-pip python3-setuptools
 
-RUN python3 -m pip install cython
+RUN python3 -m pip install cython pybind11
 
 RUN python3 -m pip install attrs \
                            cloudpickle \
