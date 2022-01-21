@@ -31,14 +31,17 @@ RUN ln -s /usr/bin/python3.8 /usr/bin/python3
 
 RUN apt-get install -y python3-pip python3-setuptools
 
-RUN python3 -m pip install cython pybind11
+RUN python3 -m pip install --upgrade pip
+
+RUN python3 -m pip install cython pybind11 numpy
 
 RUN python3 -m pip install attrs \
                            cloudpickle \
                            decorator \
                            psutil \
                            synr \
-                           tornado
+                           tornado \
+                           scipy
 
 RUN mkdir -p /wheels
 
