@@ -15,7 +15,9 @@ RUN apt-get update -y -qq && apt-get install -y python3-setuptools \
             llvm-10 \
             libopenblas-dev \
             libopencv-dev \
-            vim
+            vim \
+            libprotobuf \
+            protobuf-compiler
 
 RUN ln -s /usr/local/cuda-10.2/targets/aarch64-linux/lib/stubs/libcuda.so /usr/local/cuda-10.2/lib64/libcuda.so
 
