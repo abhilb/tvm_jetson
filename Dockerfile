@@ -51,4 +51,4 @@ COPY ./build.sh .
 
 RUN chmod +x build.sh
 
-ENTRYPOINT [ ".\build.sh" ]
+ENTRYPOINT [ "/bin/bash", ".\build.sh" ]
