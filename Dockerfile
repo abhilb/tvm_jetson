@@ -7,7 +7,6 @@ RUN apt-get update -y -qq && apt-get install -y python3-setuptools \
             libtinfo-dev \
             zlib1g-dev \
             build-essential \
-            cmake \
             libedit-dev \
             libxml2-dev \
             git \
@@ -17,7 +16,20 @@ RUN apt-get update -y -qq && apt-get install -y python3-setuptools \
             libopencv-dev \
             vim \
             libprotobuf-dev \
-            protobuf-compiler
+            protobuf-compiler \
+            wget \
+            gpg \
+            lsb-release
+
+RUN wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | sudo tee /usr/share/keyrings/kitware-archive-keyring.gpg >/dev/null
+
+RUN echo 'deb [signed-by=/usr/share/keyrings/kitware-archive-keyring.gpg] https://apt.kitware.com/ubuntu/ focal main' | sudo tee /etc/apt/sources.list.d/kitware.list >/dev/null
+
+RUN sudo apt-get update
+
+RUN sudo apt-get install -y cmake
+
+RUN cmake --version
 
 RUN ln -s /usr/local/cuda-10.2/targets/aarch64-linux/lib/stubs/libcuda.so /usr/local/cuda-10.2/lib64/libcuda.so
 
@@ -51,4 +63,4 @@ COPY ./build.sh .
 
 RUN chmod +x build.sh
 
-ENTRYPOINT [ "/bin/bash", "build.sh" ]
+ENTRYPOINT [ "/bin/bash" ]

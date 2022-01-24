@@ -42,6 +42,3 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/tvm_jetson:latest
 
-      - name: Test
-        run: |
-          docker run --rm abhilb/tvm_jetson:latest
