@@ -3,7 +3,8 @@ FROM --platform=linux/arm64 nvcr.io/nvidia/l4t-cuda:10.2.460-runtime
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update -y -qq && apt-get install -y python3-setuptools \
-            gcc \
+            gcc-8 \
+            g++-8 \
             libtinfo-dev \
             zlib1g-dev \
             build-essential \
@@ -22,6 +23,10 @@ RUN apt-get update -y -qq && apt-get install -y python3-setuptools \
             lsb-release
 
 RUN lsb_release
+
+RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 800
+
+RUN update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-8 800
 
 RUN wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | tee /usr/share/keyrings/kitware-archive-keyring.gpg >/dev/null
 
