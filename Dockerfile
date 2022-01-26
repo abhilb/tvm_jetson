@@ -1,4 +1,4 @@
-FROM --platform=linux/arm64 nvcr.io/nvidia/l4t-cuda:10.2.460-runtime
+FROM --platform=linux/arm64 nvcr.io/nvidia/deepstream-l4t:6.0-base
 
 ENV DEBIAN_FRONTEND=noninteractive
 
