@@ -42,6 +42,8 @@ RUN ln -s /usr/local/cuda-10.2/targets/aarch64-linux/lib/stubs/libcuda.so /usr/l
 
 RUN ln -s /usr/local/cuda-10.2/lib64/libcudart.so.10.2 /usr/local/cuda-10.2/lib64/libcudart.so
 
+RUN wget https://developer.nvidia.com/embedded/l4t/r32_release_v6.1/jeston_nano/jetson-nano-jp46-sd-card-image.zip
+
 COPY ./config.cmake .
 
 RUN apt-get install -y python3.8 python3.8-dev
