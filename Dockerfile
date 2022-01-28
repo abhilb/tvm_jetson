@@ -29,8 +29,6 @@ RUN apt-get update && apt-get install -y cmake python3.8 python3.8-dev
 
 RUN ln -s /usr/local/cuda-10.2/targets/aarch64-linux/lib/stubs/libcuda.so /usr/local/cuda-10.2/lib64/libcuda.so
 
-RUN ln -s /usr/local/cuda-10.2/lib64/libcudart.so.10.2 /usr/local/cuda-10.2/lib64/libcudart.so
-
 COPY ./config.cmake .
 
 RUN rm /usr/bin/python3 && ln -s /usr/bin/python3.8 /usr/bin/python3
