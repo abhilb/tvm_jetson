@@ -3,22 +3,24 @@ FROM timongentzsch/l4t-ubuntu20-crosscompile:latest
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update -y -qq && apt-get install -y python3-setuptools \
-            libtinfo-dev \
-            zlib1g-dev \
-            build-essential \
-            libedit-dev \
-            libxml2-dev \
-            git \
-            cmake \
-            llvm-10 \
-            libopenblas-dev \
-            libopencv-dev \
-            vim \
-            libprotobuf-dev \
-            protobuf-compiler \
-            wget \
-            gpg \
-            python3-pip
+    libtinfo-dev \
+    zlib1g-dev \
+    build-essential \
+    libedit-dev \
+    libxml2-dev \
+    git \
+    cmake \
+    llvm-10 \
+    libopenblas-dev \
+    libopencv-dev \
+    vim \
+    libprotobuf-dev \
+    protobuf-compiler \
+    wget \
+    gpg \
+    python3-pip \
+    rm -rf /var/lib/apt/lists/* && \
+    apt-get clean
 
 
 RUN wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | tee /usr/share/keyrings/kitware-archive-keyring.gpg >/dev/null
@@ -38,12 +40,12 @@ RUN python3 -m pip install --upgrade pip
 RUN python3 -m pip install cython pybind11 numpy
 
 RUN python3 -m pip install attrs \
-                           cloudpickle \
-                           decorator \
-                           psutil \
-                           synr \
-                           tornado \
-                           scipy
+    cloudpickle \
+    decorator \
+    psutil \
+    synr \
+    tornado \
+    scipy
 
 RUN mkdir -p /wheels
 
