@@ -1,17 +1,18 @@
 version: 1.0.{build}
-image: Ubuntu
+image: Ubuntu2004
 
 environment:
   matrix:
     - ARCH: arm64
 
 install:
-- sh: sudo apt-get update -y -qq
-- sh: sudo apt-get install -y qemu-user-static
-- sh: sudo apt-get install -y binfmt-support
+- sh: >-
+    sudo apt-get update -y -qq
+    sudo apt-get install -y qemu-user-static
+    sudo apt-get install -y binfmt-support
 
 services:
 - docker
 
 build_script:
-  - sh: docker build --platform "linux/arm64" -t tvm_jetson --build-arg "arch=arm64" .
+  - sh: docker buildx --platform "linux/arm64" -t tvm_jetson --build-arg "arch=arm64" .
