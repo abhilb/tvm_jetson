@@ -18,7 +18,7 @@ RUN apt-get update -y -qq && apt-get install -y python3-setuptools \
     protobuf-compiler \
     wget \
     gpg \
-    python3-pip \
+    python3-pip && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean
 
