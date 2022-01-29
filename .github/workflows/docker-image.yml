@@ -44,5 +44,5 @@ jobs:
       - 
         name: Build python package
         run: |
-          docker run --rm tvm_jetson
+          docker run --rm ${{ secrets.DOCKER_HUB_USERNAME }}/tvm_jetson:latest
 
