@@ -14,4 +14,4 @@ services:
 - docker
 
 build_script:
-  - sh: docker buildx build --platform "linux/arm64" -t tvm_jetson -q .
+  - sh: docker run --rm --entrypoint '/bin/bash' abhilb/tvm_jetson:latest -c ./build.sh
