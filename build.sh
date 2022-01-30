@@ -15,7 +15,7 @@ mkdir -p build
 cp /config.cmake tvm/build
 pushd build
 cmake ..
-make -j
+make -j 4
 popd
 
 echo "======================================="
