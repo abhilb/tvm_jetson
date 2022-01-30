@@ -1,0 +1,10 @@
+name: Build Apache TVM Python package
+
+on: workflow_dispatch
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: build_python_package
+      run: docker run --rm --entrypoint ls abhilb/tvm_jetson:latest
