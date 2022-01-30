@@ -6,5 +6,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - name: Install Deps
+      run: |
+          sudo apt-get update -y -qq
+          sudo apt-get install -y qemu-user-static
+          sudo apt-get install -y binfmt-support
     - name: build_python_package
       run: docker run --rm --entrypoint ls abhilb/tvm_jetson:latest
