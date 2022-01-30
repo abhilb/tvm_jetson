@@ -12,4 +12,4 @@ jobs:
           sudo apt-get install -y qemu-user-static
           sudo apt-get install -y binfmt-support
     - name: build_python_package
-      run: docker run --rm --entrypoint 'ls -l' abhilb/tvm_jetson:latest
+      run: docker run --rm --entrypoint '/bin/bash' abhilb/tvm_jetson:latest -c ./build.sh
