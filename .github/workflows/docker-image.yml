@@ -37,8 +37,3 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/tvm_jetson:latest
-      - 
-        name: Build python package
-        run: |
-          docker run --rm ${{ secrets.DOCKER_HUB_USERNAME }}/tvm_jetson:latest
-

@@ -9,10 +9,10 @@ git clone --recursive https://github.com/apache/tvm.git
 echo "+++++++++++++ Completed cloning apache tvm ++++++++++++++++"
 
 ls -l
+cp ./config.cmake ./tvm/build
 
 pushd tvm
 mkdir -p build
-cp /config.cmake tvm/build
 pushd build
 cmake ..
 make -j 4
