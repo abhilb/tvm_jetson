@@ -15,7 +15,7 @@ pushd tvm
 mkdir -p build
 pushd build
 cmake ..
-make -j 4
+make -j 8
 popd
 
 echo "======================================="
